@@ -1,0 +1,16 @@
+Description: Fix version in dkms.conf
+Forwarded: no
+Author: Ross Vandegrift <ross@kallisti.us>
+Last-Update: 2017-09-07
+
+--- a/module/dkms.conf
++++ b/module/dkms.conf
+@@ -7,7 +7,7 @@
+ #
+ 
+ PACKAGE_NAME="evdi"
+-PACKAGE_VERSION=1.0.0
++PACKAGE_VERSION=1.4.1
+ AUTOINSTALL=yes
+ 
+ MAKE[0]="make all INCLUDEDIR=/lib/modules/$kernelver/build/include KVERSION=$kernelver DKMS_BUILD=1"

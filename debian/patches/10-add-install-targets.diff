@@ -1,0 +1,34 @@
+Description: add install targets to Makefile
+Forwarded: no
+Author: Ross Vandegrift <ross@kallisti.us>
+Last-Update: 2017-09-07
+
+--- a/Makefile
++++ b/Makefile
+@@ -3,6 +3,8 @@
+ #
+ 
+ FLAGS=-Werror -Wextra -Wall -Wmissing-prototypes -Wstrict-prototypes
++PREFIX?=/usr/local
++VERSION=1.4.1
+ 
+ all: module library
+ 
+@@ -16,3 +18,5 @@
+ 	$(MAKE) clean -C module $(MFLAGS)
+ 	$(MAKE) clean -C library $(MFLAGS)
+ 
++install:
++	VERSION=$(VERSION) $(MAKE) -C library install
+--- a/library/Makefile
++++ b/library/Makefile
+@@ -16,3 +16,9 @@
+ libevdi.so: evdi_lib.o
+ 	$(CC) $^ -o $@ -lc -lgcc -shared -Wl,-soname,libevdi.so.0
+ 
++install: libevdi.so evdi_lib.h
++	mkdir -p $(PREFIX)/include $(PREFIX)/lib
++	install -m 0644 -D evdi_lib.h $(PREFIX)/include/evdi_lib.h
++	install -m 0644 -D libevdi.so $(PREFIX)/lib/libevdi.so.0.$(VERSION)
++	ln -s libevdi.so.0.$(VERSION) $(PREFIX)/lib/libevdi.so.0
++	ln -s libevdi.so.0.$(VERSION) $(PREFIX)/lib/libevdi.so

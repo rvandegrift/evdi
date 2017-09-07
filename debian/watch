@@ -1,0 +1,4 @@
+# Direct Git
+version=4
+opts="mode=git" https://github.com/DisplayLink/evdi.git \
+  refs/tags/v([\d\.]+) debian uupdate

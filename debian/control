@@ -1,0 +1,69 @@
+Source: evdi
+Section: kernel
+Priority: optional
+Maintainer: Ross Vandegrift <ross@kallisti.us>
+Standards-Version: 3.9.8
+Homepage: https://github.com/DisplayLink/evdi
+Vcs-Git: https://github.com/rvandegrift/evdi.git
+Build-Depends: debhelper (>= 10), libdrm-dev
+Build-Depends-Indep: dkms
+
+Package: evdi-dkms
+Architecture: all
+Depends: ${misc:Depends}
+Description: Extensible virtual display - kernel module (dkms version)
+ The Extensible Virtual Display Interface (EVDI) is a Linux® kernel
+ module that enables management of multiple screens, allowing
+ user-space programs to take control over what happens with the
+ image. It is essentially a virtual display you can add, remove and
+ receive screen updates for, in an application that uses the libevdi
+ library.
+ .
+ The project is part of the DisplayLink Ubuntu development which
+ enables support for DisplayLink USB 3.0 devices on Ubuntu. Please
+ note that this is NOT a complete driver for DisplayLink devices. For
+ more information and the full driver package, see DisplayLink Ubuntu
+ driver <http://www.displaylink.com/downloads/ubuntu.php>.
+ .
+ This package contins the kernel module source to be built with dkms.
+
+Package: libevdi0
+Section: libs
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Extensible virtual display - userspace library
+ The Extensible Virtual Display Interface (EVDI) is a Linux® kernel
+ module that enables management of multiple screens, allowing
+ user-space programs to take control over what happens with the
+ image. It is essentially a virtual display you can add, remove and
+ receive screen updates for, in an application that uses the libevdi
+ library.
+ .
+ The project is part of the DisplayLink Ubuntu development which
+ enables support for DisplayLink USB 3.0 devices on Ubuntu. Please
+ note that this is NOT a complete driver for DisplayLink devices. For
+ more information and the full driver package, see DisplayLink Ubuntu
+ driver <http://www.displaylink.com/downloads/ubuntu.php>.
+ .
+ This package contins the userspace shared library.
+
+Package: libevdi-dev
+Section: libdevel
+Architecture: any
+Depends: ${misc:Depends}, libevdi0 (= ${binary:Version})
+Description: Extensible virtual display - userspace library header
+ The Extensible Virtual Display Interface (EVDI) is a Linux® kernel
+ module that enables management of multiple screens, allowing
+ user-space programs to take control over what happens with the
+ image. It is essentially a virtual display you can add, remove and
+ receive screen updates for, in an application that uses the libevdi
+ library.
+ .
+ The project is part of the DisplayLink Ubuntu development which
+ enables support for DisplayLink USB 3.0 devices on Ubuntu. Please
+ note that this is NOT a complete driver for DisplayLink devices. For
+ more information and the full driver package, see DisplayLink Ubuntu
+ driver <http://www.displaylink.com/downloads/ubuntu.php>.
+ .
+ This package contins the header file for the userspace shared library.
