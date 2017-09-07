@@ -1,0 +1,4 @@
+00-bump-dkms-version.diff
+05-split-build-targets.diff
+10-add-install-targets.diff
+20-respect-ldflags.diff
